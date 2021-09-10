@@ -90,7 +90,8 @@ public class CourseService {
 
         Course foundCourse = courseWithStudentsMapper.mapCourseWithStudentsDTOToCourse(courseWithStudentsDTO);
         List<Student> students = foundCourse.getStudents();
-        if(courseRepository.selectExistsCourseCode(foundCourse.getCourseCode())){
+        boolean isExists = courseRepository.selectExistsCourseCode(foundCourse.getCourseCode());
+        if(isExists){
 
             throw new CourseIsAlreadyExistException("Course With CourseCode : " + foundCourse.getCourseCode() + " is already exists!!!!");
 
