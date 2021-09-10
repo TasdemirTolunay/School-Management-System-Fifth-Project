@@ -59,9 +59,6 @@ public class AddressService {
         Iterable<Address> iteAddress = addressRepository.findAll();
         iteAddress.iterator().forEachRemaining(addressList :: add);
         List<AddressDTO> addressDTOList = addressMapper.mapAddressListToAddressDTOList(addressList);
-        if(addressDTOList.isEmpty()){
-            throw new EmptyListException(ErrorMessageConstants.EMPTY_LIST);
-        }
         return addressDTOList;
 
     }
