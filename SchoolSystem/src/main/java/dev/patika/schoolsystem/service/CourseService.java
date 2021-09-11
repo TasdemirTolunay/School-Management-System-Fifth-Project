@@ -17,6 +17,7 @@ import dev.patika.schoolsystem.mapper.StudentWithCoursesMapper;
 import dev.patika.schoolsystem.repository.CourseRepository;
 import dev.patika.schoolsystem.repository.InstructorRepository;
 import dev.patika.schoolsystem.repository.StudentRepository;
+import dev.patika.schoolsystem.util.CourseStudentSizeValid;
 import dev.patika.schoolsystem.util.ErrorMessageConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CourseService {
+
+
+    private CourseStudentSizeValid studentSizeValid;
 
     @Autowired
     private CourseRepository courseRepository;
@@ -97,11 +101,14 @@ public class CourseService {
 
         }
 
-        if(students.size() > 20){
+        boolean sizeEx = studentSizeValid.studentSizeValidator(students.size());
+
+        if(sizeEx){
 
             throw new StudentNumberForOneCourseExceededException(ErrorMessageConstants.MAX_COURSE_STUDENTS);
 
         }
+
         courseRepository.save(foundCourse);
         return courseMapper.mapCourseToCourseDTO(foundCourse);
 
