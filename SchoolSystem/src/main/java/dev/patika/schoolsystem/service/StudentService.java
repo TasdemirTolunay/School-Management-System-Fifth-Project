@@ -17,6 +17,7 @@ import dev.patika.schoolsystem.repository.AddressRepository;
 import dev.patika.schoolsystem.repository.CourseRepository;
 import dev.patika.schoolsystem.repository.StudentRepository;
 import dev.patika.schoolsystem.util.ErrorMessageConstants;
+import dev.patika.schoolsystem.util.StudentAgeValid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,8 @@ public class StudentService {
     @Autowired
     private AddressMapper addressMapper;
 
+    private StudentAgeValid studentAgeValid;
+
     /**
      * Gets all student list on the database.
      * @return Student List
@@ -89,9 +92,9 @@ public class StudentService {
     public StudentWithCoursesDTO saveStudent(StudentDTO studentDTO){
 
         Student foundStudent = studentMapper.mapStudentDTOToStudent(studentDTO);
-        int birthDateYear = foundStudent.getStudentBirthDate().getYear();
-        int age = (LocalDate.now().getYear()) - birthDateYear;
-        if(age < 18 || age > 40){
+        int birthDateYear = studentDTO.getStudentBirthDate().getYear();
+        boolean valid = studentAgeValid.studentAgeValidator(birthDateYear);
+        if(valid){
             throw new StudentAgeNotValidException(ErrorMessageConstants.WRONG_AGE);
         }
         return studentWithCoursesMapper.mapStudentToStudentWithCoursesDTO(studentRepository.save(foundStudent));
@@ -110,8 +113,8 @@ public class StudentService {
         Student foundStudent = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IdNotFoundException(String.format(ErrorMessageConstants.STUDENT_NOT_FOUND, studentId)));
         int birthDateYear = studentDTO.getStudentBirthDate().getYear();
-        int age = (LocalDate.now().getYear()) - birthDateYear;
-        if(age < 18 || age > 40){
+        boolean valid = studentAgeValid.studentAgeValidator(birthDateYear);
+        if(valid){
             throw new StudentAgeNotValidException(ErrorMessageConstants.WRONG_AGE);
         }
         foundStudent.setStudentName(studentDTO.getStudentName());

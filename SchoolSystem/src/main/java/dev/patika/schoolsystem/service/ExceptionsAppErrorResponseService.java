@@ -31,11 +31,6 @@ public class ExceptionsAppErrorResponseService {
         List<ExceptionsAppErrorResponse> errorResponseList = new ArrayList<>();
         Iterable<ExceptionsAppErrorResponse> errorResponseIterable = responseRepository.findAll();
         errorResponseIterable.iterator().forEachRemaining(errorResponseList :: add);
-        if (errorResponseList.isEmpty()){
-
-            throw new EmptyListException(ErrorMessageConstants.EMPTY_LIST);
-
-        }
         return errorResponseList;
 
     }

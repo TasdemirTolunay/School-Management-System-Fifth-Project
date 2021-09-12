@@ -61,11 +61,6 @@ public class InstructorService {
         List<Instructor> instructorList = new ArrayList<>();
         Iterable<Instructor> instructorIterable = instructorRepository.findAll();
         instructorIterable.iterator().forEachRemaining(instructorList :: add);
-        if(instructorList.isEmpty()){
-
-                throw new EmptyListException(ErrorMessageConstants.EMPTY_LIST);
-
-        }
         return instructorResponseMapper.mapInstructorListToInstructorResponseDTOList(instructorList);
 
     }
