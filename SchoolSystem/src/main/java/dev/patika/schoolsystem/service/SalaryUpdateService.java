@@ -29,9 +29,8 @@ public class SalaryUpdateService {
     private InstructorRepository instructorRepository;
 
     @Transactional
-    public SalaryUpdate instructorSalaryUpdate(long instructorId, RaiseType raiseType, double changeAmount){
+    public SalaryUpdate instructorSalaryUpdate(long instructorId, RaiseType raiseType, double changeAmount, SalaryUpdate salaryUpdate){
 
-        SalaryUpdate salaryUpdate = new SalaryUpdate();
         Instructor instructor = instructorRepository.findById(instructorId)
                 .orElseThrow(() -> new IdNotFoundException(String.format(ErrorMessageConstants.INSTRUCTOR_NOT_FOUND, instructorId)));
         salaryUpdate.setInstructorId(instructor.getId());

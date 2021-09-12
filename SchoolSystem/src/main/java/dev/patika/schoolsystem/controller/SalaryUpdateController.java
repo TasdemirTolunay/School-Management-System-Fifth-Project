@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -18,9 +19,13 @@ public class SalaryUpdateController {
     private SalaryUpdateService salaryUpdateService;
 
     @PostMapping("/update/{instructorId}/{raiseType}/{percentChangeAmount}")
-    public ResponseEntity<SalaryUpdate> instructorSalaryUpdate(@PathVariable long instructorId, @PathVariable RaiseType raiseType, @PathVariable double percentChangeAmount){
+    public ResponseEntity<SalaryUpdate> instructorSalaryUpdate(HttpServletRequest request, @PathVariable long instructorId, @PathVariable RaiseType raiseType, @PathVariable double percentChangeAmount){
 
-        return new ResponseEntity<>(salaryUpdateService.instructorSalaryUpdate(instructorId,raiseType,percentChangeAmount), HttpStatus.OK);
+        SalaryUpdate salaryUpdate = new SalaryUpdate();
+        salaryUpdate.setRequestUrl(request.getRequestURI());
+        salaryUpdate.setRemoteAdr(request.getRemoteAddr());
+        salaryUpdate.setSession(request.getSession().toString());
+        return new ResponseEntity<>(salaryUpdateService.instructorSalaryUpdate(instructorId,raiseType,percentChangeAmount,salaryUpdate), HttpStatus.OK);
 
     }
 

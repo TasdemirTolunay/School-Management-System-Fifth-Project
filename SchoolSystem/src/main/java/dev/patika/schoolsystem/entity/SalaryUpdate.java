@@ -20,6 +20,8 @@ public class SalaryUpdate {
     @JsonIgnore
     private long salaryUpdateId;
 
+
+
     private long instructorId;
     private String salaryType;
 
@@ -30,5 +32,8 @@ public class SalaryUpdate {
     private double afterUpdateSalary;
     private double percentChangeAmount;
     private LocalDate requestTime;
+    private String requestUrl;
+    private String remoteAdr;
+    private String session;
 
 }

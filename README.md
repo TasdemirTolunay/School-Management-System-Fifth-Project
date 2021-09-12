@@ -128,7 +128,7 @@ http://localhost:8080/swagger-ui.html
     ![BeforeUpdateSalary](SchoolSystem/src/main/java/images/beforeIncraise.jpg)
     - While updating, it is specified in which instructor's salary, what type and how many percent salary changes will be made.
     
-    ![WhenUpdating](SchoolSystem/src/main/java/images/WhenIncraise.jpg)
+    ![WhenUpdating](SchoolSystem/src/main/java/images/WhenIncraiseChange.jpg)
     - After update instructors salary:
     
     ![AfterUpdate](SchoolSystem/src/main/java/images/AfterIncraise.jpg)
@@ -140,24 +140,24 @@ http://localhost:8080/swagger-ui.html
     ![BeforeUpdateSalary](SchoolSystem/src/main/java/images/BeforeReduction.jpg)
     - While updating, it is specified in which instructor's salary, what type and how many percent salary changes will be made.
 
-    ![WhenUpdating](SchoolSystem/src/main/java/images/WhenReduction.jpg)
+    ![WhenUpdating](SchoolSystem/src/main/java/images/WhenReductionChange.jpg)
     - After update instructors salary:
 
     ![AfterUpdate](SchoolSystem/src/main/java/images/AfterReduction.jpg)
 
 - Salary update information is kept as a separate table in the database.
   
-![SalaryUpdateTable](SchoolSystem/src/main/java/images/SalaryUpdateDatabase.jpg)
+![SalaryUpdateTable](SchoolSystem/src/main/java/images/SalaryUpdateDataChange.jpg)
 
 - Salary update informations can be queried with instructor id and request time.
 
 - Salary update query with request time:
 
-![QueryWithRequestTime](SchoolSystem/src/main/java/images/SalaryUpdateRequestTime.jpg)
+![QueryWithRequestTime](SchoolSystem/src/main/java/images/SalaryUpdateTimeChange.jpg)
 
 - Salary update query with Instructor Id:
 
-![QueryWithInstructorId](SchoolSystem/src/main/java/images/SalaryUpdateInstructorId.jpg)
+![QueryWithInstructorId](SchoolSystem/src/main/java/images/SalaryUpdateIdChange.jpg)
 
 ### Some Exceptions In The Project
 
