@@ -20,6 +20,7 @@
         <li><a href="#some-exceptions-in-the-project">Some Exceptions In The Project</a></li>
       </ul>
     </li>
+    <li><a href="#unit-tests">Unit Tests</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#">Fifth Projects Information</a></li>
   </ol>
@@ -181,6 +182,16 @@ http://localhost:8080/swagger-ui.html
 - Thrown exceptions can be queried by type, status code, date thrown or the all exception list can be queried.
 
 ![AllExceptionList](SchoolSystem/src/main/java/images/Errors.jpg)
+
+## Unit Tests
+
+---
+
+- Unit tests were written for Service and Controller classes in the project.
+- Unit tests were made for possible errors in the project.
+- A total of forty five unit tests are available for all service and controller classes.
+- All unit tests performed were successful.
+- The contents of the unit tests can be viewed from the existing code.
 
 ## Contact
 
